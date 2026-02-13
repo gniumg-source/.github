@@ -1,0 +1,63 @@
+## Hi there 👋
+Logotipo de LangGraph
+
+Versión Descargas Problemas abiertos Documentos
+
+LangGraph, en el que confían las empresas que están dando forma al futuro de los agentes (entre ellas Klarna, Replit, Elastic y más), es un marco de orquestación de bajo nivel para crear, administrar e implementar agentes con estado y de larga duración.
+
+Primeros pasos
+Instalar LangGraph:
+
+pip install -U langgraph
+Crear un flujo de trabajo sencillo:
+
+from langgraph.graph import START, StateGraph
+from typing_extensions import TypedDict
+
+
+class State(TypedDict):
+    text: str
+
+
+def node_a(state: State) -> dict:
+    return {"text": state["text"] + "a"}
+
+
+def node_b(state: State) -> dict:
+    return {"text": state["text"] + "b"}
+
+
+graph = StateGraph(State)
+graph.add_node("node_a", node_a)
+graph.add_node("node_b", node_b)
+graph.add_edge(START, "node_a")
+graph.add_edge("node_a", "node_b")
+
+print(graph.compile().invoke({"text": ""}))
+# {'text': 'ab'}
+Comienza con la guía de inicio rápido de LangGraph
+
+Para crear agentes rápidamente con LangChain create_agent(creado en LangGraph), consulte la documentación de Agentes de LangChain .
+
+Beneficios principales
+LangGraph proporciona una infraestructura de soporte de bajo nivel para cualquier flujo de trabajo o agente con estado de larga duración. LangGraph no abstrae las indicaciones ni la arquitectura, y proporciona los siguientes beneficios principales:
+
+Ejecución duradera : cree agentes que persistan ante fallas y puedan ejecutarse durante períodos prolongados, reanudándose automáticamente exactamente desde donde se quedaron.
+Human-in-the-loop : incorpore sin problemas la supervisión humana inspeccionando y modificando el estado del agente en cualquier punto durante la ejecución.
+Memoria integral : cree agentes verdaderamente con estado, con memoria de trabajo a corto plazo para el razonamiento continuo y memoria persistente a largo plazo en todas las sesiones.
+Depuración con LangSmith : obtenga una visibilidad profunda del comportamiento complejo de los agentes con herramientas de visualización que rastrean rutas de ejecución, capturan transiciones de estado y brindan métricas de tiempo de ejecución detalladas.
+Implementación lista para producción : implemente sistemas de agentes sofisticados con confianza con una infraestructura escalable diseñada para manejar los desafíos únicos de los flujos de trabajo de larga duración y con estado.
+<!--
+**gniumg-source/.github** is a ✨ _special_ ✨ repository because its `profile/README.md` (this file) appears on your GitHub profile.
+
+Here are some ideas to get you started:
+
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
