@@ -1,0 +1,240 @@
+Administrar la configuración de Acciones de GitHub para un repositorio
+Puede deshabilitar o configurar GitHub Actions para un repositorio específico.
+
+En este artículo
+Acerca de los permisos de GitHub Actions para su repositorio
+De forma predeterminada, GitHub Actions está habilitado en todos los repositorios y organizaciones. Puedes deshabilitarlo o limitarlo a las acciones y flujos de trabajo reutilizables de tu organización. Para obtener más información sobre GitHub Actions, consulta " Escritura de flujos de trabajo" .
+
+Puedes habilitar GitHub Actions en tu repositorio. Al habilitar GitHub Actions, los flujos de trabajo pueden ejecutar acciones y flujos de trabajo reutilizables ubicados en tu repositorio y en cualquier otro repositorio público. Puedes deshabilitar GitHub Actions en tu repositorio por completo. Al deshabilitar GitHub Actions, no se ejecuta ningún flujo de trabajo en tu repositorio.
+
+Como alternativa, puede habilitar Acciones de GitHub en su repositorio, pero limitar las acciones y los flujos de trabajo reutilizables que un flujo de trabajo puede ejecutar.
+
+Administrar los permisos de GitHub Actions para su repositorio
+Puede deshabilitar las Acciones de GitHub para un repositorio o establecer una política que configure qué acciones y flujos de trabajo reutilizables se pueden usar en el repositorio.
+
+Nota
+
+Es posible que no puedas administrar esta configuración si tu organización tiene una política de anulación o está administrada por una empresa que también la tiene. Para obtener más información, consulta Deshabilitar o limitar GitHub Actions en tu organización o Aplicar políticas para GitHub Actions en tu empresa .
+
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En “Permisos de acciones”, seleccione una opción.
+
+Si selecciona Permitir PROPIETARIO y selecciona No PROPIETARIO , se permiten las acciones y los flujos de trabajo reutilizables dentro de su organización, y existen opciones adicionales para permitir otras acciones y flujos de trabajo reutilizables específicos. Para obtener más información, consulte Permitir la ejecución de acciones seleccionadas y flujos de trabajo reutilizables .
+
+Al permitir acciones y flujos de trabajo reutilizables solo desde tu organización, la política bloquea todo acceso a las acciones creadas por GitHub. Por ejemplo, la actions/checkoutacción no sería accesible.
+
+Al habilitar la opción "Requerir que las acciones se anclen a un SHA de confirmación completo" , todas las acciones deben estar ancladas a un SHA de confirmación completo para poder usarse. Esto incluye acciones de tu organización y acciones creadas por GitHub. Los flujos de trabajo reutilizables aún se pueden referenciar por etiqueta. Para obtener más información, consulta la referencia de uso seguro .
+
+Haga clic en Guardar .
+
+
+Permitir que se ejecuten acciones seleccionadas y flujos de trabajo reutilizables
+Cuando elige Permitir PROPIETARIO y selecciona No PROPIETARIO , se permiten acciones y flujos de trabajo reutilizables , acciones locales y flujos de trabajo reutilizables, y hay opciones adicionales para permitir otras acciones específicas y flujos de trabajo reutilizables:
+
+Nota
+
+Es posible que no puedas administrar esta configuración si tu organización tiene una política de anulación o está administrada por una empresa que también la tiene. Para obtener más información, consulta Deshabilitar o limitar GitHub Actions en tu organización o Aplicar políticas para GitHub Actions en tu empresa .
+
+Permitir acciones creadas por GitHub: Puedes permitir que los flujos de trabajo utilicen todas las acciones creadas por GitHub. Estas acciones se encuentran en las organizaciones actionsy github. Para obtener más información, consulta las organizaciones actionsy .github
+
+Permitir acciones de Marketplace de creadores verificados: Puedes permitir que todas las acciones de GitHub Marketplace creadas por creadores verificados se utilicen en los flujos de trabajo. Cuando GitHub haya verificado al creador de la acción como organización asociada, la insignia se mostrará junto a la acción en GitHub Marketplace.
+
+Permitir o bloquear acciones específicas y flujos de trabajo reutilizables: Puede restringir el uso de acciones y flujos de trabajo reutilizables en organizaciones y repositorios específicos. No se pueden establecer más de 1000 acciones específicas.
+
+Para restringir el acceso a etiquetas específicas o confirmar SHA de una acción o flujo de trabajo reutilizable, utilice la misma sintaxis utilizada en el flujo de trabajo para seleccionar la acción o el flujo de trabajo reutilizable.
+
+Para una acción, la sintaxis es OWNER/REPOSITORY@TAG-OR-SHA. Por ejemplo, use actions/javascript-action@v1.0.1para seleccionar una etiqueta o actions/javascript-action@a824008085750b8e136effc585c3cd6082bd575fpara seleccionar un SHA. Para obtener más información, consulte Uso de bloques de creación predefinidos en su flujo de trabajo .
+Para un flujo de trabajo reutilizable, la sintaxis es OWNER/REPOSITORY/PATH/FILENAME@TAG-OR-SHA. Por ejemplo, octo-org/another-repo/.github/workflows/workflow.yml@v1. Para obtener más información, consulte Reutilizar flujos de trabajo .
+Puedes usar el *carácter comodín para encontrar patrones. Por ejemplo, para permitir todas las acciones y flujos de trabajo reutilizables en organizaciones que empiezan por space-org, puedes especificar space-org*/*. Para permitir todas las acciones y flujos de trabajo reutilizables en repositorios que empiezan por octocat, puedes usar */octocat**@*. Para obtener más información sobre el uso del *comodín, consulta Sintaxis de flujo de trabajo para GitHub Actions .
+
+Úselo ,para separar patrones. Por ejemplo, para permitir todas las acciones y flujos de trabajo reutilizables de las organizaciones octocaty octokit, puede especificar octocat/*, octokit/*.
+
+Use el !prefijo para bloquear patrones. Por ejemplo, para permitir todas las acciones y flujos de trabajo reutilizables de la space-orgorganización, pero bloquear una acción específica como space-org/action, puede especificar space-org/*, !space-org/action@*. De forma predeterminada, solo se permitirán las acciones y flujos de trabajo reutilizables especificados en la lista. Para permitir todas las acciones y flujos de trabajo reutilizables y, al mismo tiempo, bloquear acciones específicas, puede especificar *, !space-org/action@*.
+
+Este procedimiento demuestra cómo agregar acciones específicas y flujos de trabajo reutilizables a la lista.
+
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En "Permisos de acciones", seleccione Permitir PROPIETARIO , seleccione acciones que no sean PROPIETARIO y flujos de trabajo reutilizables y agregue las acciones requeridas a la lista.
+
+Haga clic en Guardar .
+
+Controlar cambios desde bifurcaciones a flujos de trabajo en repositorios públicos
+Cualquiera puede bifurcar un repositorio público y luego enviar una solicitud de extracción que proponga cambios en los flujos de trabajo de GitHub Actions del repositorio. Aunque los flujos de trabajo de las bifurcaciones no tienen acceso a datos confidenciales como secretos, pueden ser una molestia para los mantenedores si se modifican con fines abusivos.
+
+Para evitar esto, los flujos de trabajo de solicitudes de extracción a repositorios públicos de algunos colaboradores externos no se ejecutarán automáticamente y podrían requerir aprobación previa. Según la configuración "Aprobación para ejecutar flujos de trabajo de solicitudes de extracción de bifurcaciones de colaboradores", los flujos de trabajo de solicitudes de extracción a repositorios públicos no se ejecutarán automáticamente y podrían requerir aprobación si:
+
+La solicitud de extracción la crea un usuario que requiere aprobaciones según la política seleccionada.
+El evento de solicitud de extracción se activa cuando un usuario requiere aprobaciones según la política seleccionada.
+De forma predeterminada, todos los colaboradores que contribuyen por primera vez requieren aprobación para ejecutar flujos de trabajo.
+
+Los flujos de trabajo activados por pull_request_targeteventos se ejecutan en el contexto de la rama base. Dado que la rama base se considera confiable, los flujos de trabajo activados por estos eventos siempre se ejecutarán, independientemente de la configuración de aprobación. Para obtener más información sobre el pull_request_targetevento, consulte Eventos que activan flujos de trabajo .
+
+Advertencia
+
+Estas políticas de aprobación de flujos de trabajo están diseñadas para restringir el conjunto de usuarios que pueden ejecutar flujos de trabajo en ejecutores de GitHub Actions, lo que podría provocar un consumo inesperado de recursos y computación al usar ejecutores alojados en GitHub. Si utiliza ejecutores autoalojados, se ejecutará automáticamente código de flujo de trabajo potencialmente malicioso controlado por el usuario si se le permite omitir la aprobación en la política de aprobación establecida o si se aprueba la solicitud de extracción. Debe considerar el riesgo de ejecutar este código en su infraestructura y revisar y seguir las recomendaciones de seguridad de los ejecutores autoalojados, independientemente de la configuración de aprobación utilizada. Consulte la referencia de uso seguro .
+
+Puede configurar este comportamiento para un repositorio mediante el procedimiento siguiente. Al modificar esta configuración, se anula la configuración establecida a nivel de organización o empresa.
+
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En "Aprobación para ejecutar flujos de trabajo de solicitudes de extracción de bifurcaciones desde colaboradores" , seleccione qué subconjunto de usuarios requerirá aprobación antes de ejecutar flujos de trabajo en sus solicitudes de extracción. Se comprobará si se requiere aprobación tanto del autor como del agente del evento de solicitud de extracción que lo activa. Si se requiere aprobación, un usuario con acceso de escritura al repositorio debe aprobar la ejecución del flujo de trabajo de la solicitud de extracción. Consulte " Aprobación de ejecuciones de flujos de trabajo desde bifurcaciones" .
+
+Advertencia
+
+Al requerir aprobaciones solo para quienes contribuyen por primera vez (las dos primeras configuraciones), un usuario cuya confirmación o solicitud de incorporación de cambios se haya fusionado en el repositorio no requerirá aprobación. Un usuario malintencionado podría cumplir este requisito consiguiendo que un mantenedor acepte un simple error tipográfico u otro cambio inocuo, ya sea como parte de una solicitud de incorporación de cambios de su autoría o de la de otro usuario.
+
+Se requiere aprobación para quienes contribuyen por primera vez en GitHub . Solo los usuarios nuevos en GitHub que nunca hayan fusionado una confirmación o solicitud de incorporación de cambios en este repositorio requerirán aprobación para ejecutar flujos de trabajo.
+Se requiere aprobación para quienes contribuyen por primera vez . Solo los usuarios que nunca hayan fusionado una confirmación o solicitud de incorporación de cambios en este repositorio requerirán aprobación para ejecutar flujos de trabajo.
+Requerir aprobación para todos los colaboradores externos Todos los usuarios que no sean miembros o propietarios de este repositorio ni miembros de la organización requerirán aprobación para ejecutar flujos de trabajo.
+Haga clic en Guardar para aplicar la configuración.
+
+Para obtener más información sobre cómo aprobar ejecuciones de flujo de trabajo a las que se aplica esta política, consulte Aprobar ejecuciones de flujo de trabajo desde bifurcaciones .
+
+Habilitación de flujos de trabajo para bifurcaciones de repositorios privados
+Si utiliza bifurcaciones de sus repositorios privados, puede configurar políticas que controlen cómo los usuarios pueden ejecutar flujos de trabajo en pull_requesteventos. Disponibles solo para repositorios privados, puede configurar estas políticas para organizaciones o repositorios.
+
+Si una política está deshabilitada para una organización, no se podrá habilitar para un repositorio.
+
+Ejecutar flujos de trabajo desde solicitudes de extracción de bifurcación : permite a los usuarios ejecutar flujos de trabajo desde solicitudes de extracción de bifurcación, utilizando un GITHUB_TOKENpermiso de solo lectura y sin acceso a secretos.
+Enviar tokens de escritura a flujos de trabajo desde solicitudes de extracción : permite que las solicitudes de extracción de bifurcaciones utilicen un token GITHUB_TOKENcon permiso de escritura.
+Enviar secretos a flujos de trabajo desde solicitudes de extracción : hace que todos los secretos estén disponibles para la solicitud de extracción.
+Requerir aprobación para flujos de trabajo de solicitudes de extracción de bifurcación : los flujos de trabajo que se ejecutan en solicitudes de extracción de colaboradores sin permiso de escritura requerirán la aprobación de alguien con permiso de escritura antes de ejecutarse.
+Configuración de la política de bifurcación para un repositorio privado
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En Flujos de trabajo de solicitud de extracción de bifurcación , seleccione sus opciones.
+
+Haga clic en Guardar para aplicar la configuración.
+
+Configuración de los permisos GITHUB_TOKENpara su repositorio
+Puedes configurar los permisos predeterminados otorgados a GITHUB_TOKEN. Para obtener más información sobre GITHUB_TOKEN, consulta Usar GITHUB_TOKEN para la autenticación en flujos de trabajo . Puedes elegir un conjunto restringido de permisos como predeterminado o aplicar configuraciones permisivas.
+
+Los permisos predeterminados también se pueden configurar en la configuración de la organización. Si su repositorio pertenece a una organización y se ha seleccionado un valor predeterminado más restrictivo en la configuración de la organización, se seleccionará la misma opción en la configuración de su repositorio y se deshabilitará la opción permisiva.
+
+Cualquier persona con acceso de escritura a un repositorio puede modificar los permisos otorgados GITHUB_TOKEN, añadiendo o eliminando acceso según sea necesario, editando la permissionsclave en el archivo de flujo de trabajo. Para más información, consulte permissions.
+
+Configurar los GITHUB_TOKENpermisos predeterminados
+De forma predeterminada, al crear un nuevo repositorio en su cuenta personal, GITHUB_TOKENsolo tiene acceso de lectura para los ámbitos contentsy packages. Si crea un nuevo repositorio en una organización, la configuración se hereda de la configuración de la organización.
+
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En "Permisos de flujo de trabajo", elija si desea GITHUB_TOKENtener acceso de lectura y escritura para todos los permisos (configuración permisiva) o solo acceso de lectura para los permisos contentsy packages(configuración restringida).
+
+Haga clic en Guardar para aplicar la configuración.
+
+Cómo evitar que GitHub Actions cree o apruebe solicitudes de extracción
+Puedes elegir permitir o impedir que los flujos de trabajo de GitHub Actions creen o aprueben solicitudes de extracción.
+
+De forma predeterminada, al crear un nuevo repositorio en su cuenta personal, los flujos de trabajo no pueden crear ni aprobar solicitudes de extracción. Si crea un nuevo repositorio en una organización, la configuración se hereda de la configuración de la organización.
+
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En "Permisos de flujo de trabajo", use la configuración Permitir que GitHub Actions cree y apruebe solicitudes de extracción para configurar si GITHUB_TOKENpuede crear y aprobar solicitudes de extracción.
+
+Haga clic en Guardar para aplicar la configuración.
+
+Permitir el acceso a componentes en un repositorio privado
+Las acciones y los flujos de trabajo reutilizables de sus repositorios privados se pueden compartir con otros repositorios privados propiedad del mismo usuario u organización. Para obtener información sobre los repositorios privados, consulte Acerca de los repositorios .
+
+Puedes seguir los pasos a continuación para configurar si se puede acceder a las acciones y flujos de trabajo reutilizables de un repositorio privado desde fuera del repositorio. Para obtener más información, consulta Compartir acciones y flujos de trabajo desde tu repositorio privado y Compartir acciones y flujos de trabajo con tu organización . Como alternativa, puedes usar la API REST para establecer u obtener detalles del nivel de acceso. Para obtener más información, consulta Puntos de conexión de la API REST para permisos de GitHub Actions y Puntos de conexión de la API REST para permisos de GitHub Actions .
+
+Administrar el acceso a un repositorio privado
+En GitHub, navegue a la página principal del repositorio privado.
+
+Debajo del nombre de su repositorio, haga clic en Configuración .
+
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En Acceso , elija una de las configuraciones de acceso:
+
+No accesible : los flujos de trabajo en otros repositorios no pueden acceder a este repositorio.
+Accesible desde repositorios propiedad del usuario "NOMBRE DE USUARIO" : los flujos de trabajo de otros repositorios propiedad del mismo usuario pueden acceder a las acciones y flujos de trabajo reutilizables de este repositorio. El acceso solo está permitido desde repositorios privados.
+Haga clic en Guardar para aplicar la configuración.
+
+Administrar el acceso a un repositorio privado en una organización
+En GitHub, navegue a la página principal del repositorio privado.
+
+Debajo del nombre de su repositorio, haga clic en Configuración .
+
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En Acceso , elija una de las configuraciones de acceso:
+
+No accesible : los flujos de trabajo en otros repositorios no pueden acceder a este repositorio.
+Accesible desde repositorios de la organización "NOMBRE DE LA ORGANIZACIÓN" : Los flujos de trabajo de otros repositorios que forman parte de la organización "NOMBRE DE LA ORGANIZACIÓN" pueden acceder a las acciones y flujos de trabajo reutilizables de este repositorio. El acceso solo está permitido desde repositorios privados.
+Haga clic en Guardar para aplicar la configuración.
+
+Configurar los ajustes de caché para su repositorio
+Puedes configurar la retención y el tamaño de la caché para tu repositorio. Esta función es opcional y está disponible para usuarios con un método de pago registrado o con planes GitHub Pro, GitHub Team o GitHub Enterprise Cloud.
+
+Si su repositorio pertenece a una organización que ha configurado la caché, puede configurar límites hasta el máximo establecido por la organización. Si su repositorio pertenece a un usuario, puede configurar hasta los máximos globales.
+
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En la sección "Configuración de caché", configure los siguientes ajustes:
+
+Retención de caché : El número de días que se conservan las cachés antes de su eliminación automática. El valor predeterminado es 7 días. Puede configurar hasta 90 días para repositorios públicos o 365 días para repositorios privados e internos (o hasta el límite establecido por su organización).
+Límite de eliminación de caché : El tamaño máximo total de todas las cachés de su repositorio. El valor predeterminado es 10 GB. Puede configurar hasta 10 000 GB por repositorio (o hasta el límite establecido por su organización). Al superar este límite, se eliminarán las cachés antiguas para dar cabida a las nuevas.
+Haga clic en Guardar para aplicar la configuración.
+
+Para obtener más información sobre la expulsión de caché, consulte Referencia de almacenamiento en caché de dependencias .
+
+Configurar el período de retención de los artefactos y registros de GitHub Actions en su repositorio
+Puede configurar el período de retención de los artefactos y registros de GitHub Actions en su repositorio.
+
+De forma predeterminada, los artefactos y archivos de registro generados por los flujos de trabajo se conservan durante 90 días antes de eliminarse automáticamente. Puede ajustar el periodo de retención según el tipo de repositorio:
+
+Para repositorios públicos: puede cambiar este período de retención a cualquier valor entre 1 día o 90 días.
+Para repositorios privados: puede cambiar este período de retención a cualquier valor entre 1 día o 400 días.
+Al personalizar el período de retención, este solo se aplica a los nuevos artefactos y archivos de registro, y no se aplica retroactivamente a los objetos existentes. En el caso de los repositorios y organizaciones administrados, el período máximo de retención no puede superar el límite establecido por la organización o empresa administradora.
+
+También puede definir un periodo de retención personalizado para un artefacto específico creado por un flujo de trabajo. Para obtener más información, consulte Eliminación de artefactos del flujo de trabajo .
+
+Establecer el período de retención de artefactos y registros para un repositorio
+En GitHub, navegue a la página principal del repositorio.
+
+Debajo del nombre de tu repositorio, haz clic en Configuración . Si no ves la pestaña "Configuración", selecciona el menú desplegable y haz clic en Configuración .
+
+Captura de pantalla del encabezado de un repositorio que muestra las pestañas. La pestaña "Configuración" está resaltada con un contorno naranja oscuro.
+En la barra lateral izquierda, haga clic en Acciones y luego en General .
+
+En Retención de artefactos y registros , ingrese un nuevo valor.
+
+Haga clic en Guardar para aplicar el cambio.
