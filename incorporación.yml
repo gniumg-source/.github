@@ -1,0 +1,30 @@
+Acerca de las solicitudes de incorporación de cambios
+Las solicitudes de incorporación de cambios le permiten proponer, revisar y combinar cambios de código.
+
+En este artículo
+Las solicitudes de cambios son propuestas para combinar los cambios de código en un proyecto. Una "pull request" es la característica de colaboración fundamental de GitHub, que le permite discutir y revisar los cambios antes de fusionarlos. Esto ayuda a los equipos a trabajar juntos, detectar problemas al principio y mantener la calidad del código.
+
+          <a href="https://github.com/pulls?ref_product=github&ref_type=engagement&ref_style=button" target="_blank" class="btn btn-primary mt-3 mr-3 no-underline">              <span>Vea sus solicitudes de cambios</span> <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-link-external" aria-label="link external icon" role="img"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path></svg></a>
+Trabajar con solicitudes de incorporación de cambios.
+La pestaña Conversación de una solicitud de incorporación de cambios muestra una descripción de los cambios, una escala de tiempo de eventos y comentarios y opiniones de colaboradores. Este centro central le permite realizar un seguimiento de la discusión y el progreso de los cambios propuestos.
+
+La pestaña Confirmaciones muestra todas las confirmaciones realizadas en la rama de solicitud de incorporación de cambios en orden cronológico. Esto le ayuda a comprender el historial de desarrollo y a ver cómo evolucionaron los cambios a lo largo del tiempo.
+
+La pestaña Comprobaciones muestra el estado de las pruebas automatizadas, compilaciones u otros flujos de trabajo de integración continua que se ejecutan al insertar confirmaciones. Estas comprobaciones ayudan a garantizar que los cambios cumplan los estándares de calidad antes de combinarlos.
+
+La pestaña Archivos modificados muestra las diferencias entre los cambios propuestos y el código existente, lo que facilita ver lo que cambiará cuando se combine la solicitud de incorporación de cambios.
+
+Borrador de solicitudes de incorporación de cambios
+Al crear una solicitud de cambios, puede optar por convertirla en un borrador de solicitud de cambios. Los borradores de solicitudes de cambios no se pueden combinar y no se solicita automáticamente a los propietarios del código que las revisen. Esto es útil cuando desea compartir el trabajo en curso sin solicitar revisiones formalmente.
+
+Cuando estés listo para obtener retroalimentación sobre tu solicitud de extracción, puedes marcar tu borrador de solicitud de extracción como listo para revisión. Con esto, solicitarás las revisiones de cualquier propietario de código en cuestión. Puedes convertir una solicitud de extracción en borrador cuando lo desees. Consulta Cambiar la etapa de una solicitud de extracción.
+
+Diferencias entre confirmaciones en las páginas de comparación y de solicitudes de cambios
+Las páginas de comparación y de solicitudes de cambios utilizan métodos diferentes para calcular el diff de los archivos que cambiaron:
+
+Las páginas de comparación muestran el diff entre la punta de la ref de encabezado y el actual ancestro en común (es decir, la base de fusión) del encabezado y de la ref base.
+Las páginas de solicitud de cambios muestran el diff entre la punta de la ref de encabezado y el ancestro común del encabezado y la ref base en el momento en el que la solicitud de cambios se crea. Como resultado, la base de combinación utilizada para la comparación podría ser diferente.
+Información adicional
+        [AUTOTITLE](/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+        [AUTOTITLE](/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)
+        [AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)
